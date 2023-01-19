@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 
+// Estoy editando este script
+
 const app = express();
 dotenv.config();
 
@@ -14,3 +16,4 @@ const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
 });
+
