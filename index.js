@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT;
 
+
+// Escogemos puerto
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
 });
