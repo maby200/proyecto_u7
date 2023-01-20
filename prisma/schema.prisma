@@ -18,4 +18,33 @@ model User{
   last_session DateTime    @default(now())
   update_at    DateTime    @updatedAt
   date_born    DateTime
+
+  playlists Playlist[]
+
+  @@map("users")
+}
+
+model Song{
+  id           Int         @id @default(autoincrement())
+  name         String
+  artist       String      
+  album        String
+  year         Int
+  genre        String
+  duration     Int
+  isPublic     Boolean
+
+  playlists Playlist[]
+  @@map("songs")
+}
+
+model Playlist{
+  id           Int         @id @default(autoincrement())
+  name         String
+  user         User        @relation(fields: [userId], references: [id])
+  song         Song        @relation(fields: [songId], references: [id])
+  userId       Int
+  songId       Int
+
+  @@map("playlists")
 }
