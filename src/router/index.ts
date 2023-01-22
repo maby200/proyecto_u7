@@ -1,6 +1,7 @@
 import { UserRouter } from "../components";
-
-const routes = [["users", UserRouter]]
+import { playlistRouter } from "../components";
+ 
+const routes = [["users", UserRouter],["playlist", playlistRouter]]
 
 export const router = (app:any) => {
     routes.forEach(([path, controller]) => 
