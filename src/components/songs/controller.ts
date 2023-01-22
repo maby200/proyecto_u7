@@ -17,12 +17,12 @@ export const findAllSongs = async (_req: Request, res:Response): Promise<void> =
 }
 
 
-export const findSongById =async (req: Request, res: Response): Promise<void> => {
+export const findSongById = async (req: Request, res: Response): Promise<void> => {
     
     const { id } = req.params;
 
     try {
-        const song = prisma.song.findUnique({where: {id: Number(id)}});
+        const song = await prisma.song.findUnique({where: {id: Number(id)}});
 
         res.status(200).json({
             ok: true,
@@ -41,7 +41,7 @@ export const findSongById =async (req: Request, res: Response): Promise<void> =>
 export const createSong = async (req: Request, res: Response): Promise<void> => {
     try {
         const {name, artist, album, year, genre, duration, isPublic} = req.body;
-        const song = await prisma.playlist.create({
+        const song = await prisma.song.create({
             data:{
                 name : name,
                 artist : artist,
