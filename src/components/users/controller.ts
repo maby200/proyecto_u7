@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
-import { PrismaClient } from ".prisma/client";
+import prisma from "../../datasource";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-const prisma = new PrismaClient();
 
 export const findAdll = async (_req:Request, res:Response):Promise<void> => {
     try {
