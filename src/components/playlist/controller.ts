@@ -13,6 +13,23 @@ export const findPlaylists = async (_req: Request, res: Response): Promise<void>
 	}
 };
 
+
+
+export const findPlaylistsById = async (req: Request, res: Response): Promise<void> => {
+	try{
+		const id = Number(req.params.id);
+		
+		const data = await prisma.playlist.findFirst( {where:{ id }, include: {songs: true} });
+		res.status(200).json({ok:true, data: data})
+	} catch (error) {
+		
+		res.status(500).json({
+			ok: false,
+			message: error
+		});
+	}
+};
+
 export const addPlaylist = async (req: Request, res: Response): Promise<void> => {
 	try {
 		const {name, user} = req.body;
