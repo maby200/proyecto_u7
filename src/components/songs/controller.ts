@@ -1,18 +1,47 @@
 import type { Request, Response } from "express";
 import prisma from "../../datasource/";
+import { verify } from "jsonwebtoken";
 
-export const findAllSongs = async (_req: Request, res:Response): Promise<void> => {
-    try {
-        
-        const songs = await prisma.song.findMany();
 
+export const findAllSongs = async (req:Request, res: Response): Promise<void> => {
+    const { authorization } = req.headers;
+    const songs = await prisma.song.findMany();
+    const songsPublic = await prisma.song.findMany({ where: { isPublic: true } });
+    
+    if (!authorization)
         res.status(200).json({
-            ok:true,
-            data:songs,
+            ok: true, 
+            error: "No autorizado",
+            message: "Registrate para ver todas las canciones",
+            data: songsPublic
         });
 
-    } catch (error) {
-        res.status(500).json({ok:false, message:error})
+    else if (!authorization.startsWith("Bearer ")){
+        res.status(200).json({
+            error: "Error en el formato del token",
+            message: "Registrate para ver todas las canciones",
+            data: songsPublic
+        });
+    }
+
+    else{
+        const token = authorization.replace("Bearer ", "");
+        verify(token, 
+            "67e8aeee5939a45753d931c9871768623ab3f2c68c0c2fa07b9f16349ccc5b7d83881b7dd625df2ae308db59864b2e0c318ac29d8809cca89f3e9bffab1a0a6e", 
+            (err, decoded) => {
+        if (err)
+             return res.status(200).json({
+                 error: "Token inválido",
+                 message: "Registrate para ver todas las canciones",
+                 data: songsPublic
+             });
+        res.status(200).json({
+            ok: true, 
+            message: "Autorizado",
+            data: songs
+        });
+            
+        });
     }
 }
 

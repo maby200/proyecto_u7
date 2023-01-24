@@ -4,7 +4,7 @@ import { validateAuthorization } from "../middleware";
 
 const userRouter:Router = Router();
 
-userRouter.get("/get",validateAuthorization ,ControllerUser.findAdll)
+userRouter.get("/get", validateAuthorization ,ControllerUser.findAdll)
 userRouter.post("/signup", ControllerUser.signup)
 userRouter.post("/login", ControllerUser.login)
 
