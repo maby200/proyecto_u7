@@ -14,7 +14,6 @@ export const findPlaylists = async (_req: Request, res: Response): Promise<void>
 };
 
 
-
 export const findPlaylistsById = async (req: Request, res: Response): Promise<void> => {
 	try{
 		const id = Number(req.params.id);
@@ -29,6 +28,7 @@ export const findPlaylistsById = async (req: Request, res: Response): Promise<vo
 		});
 	}
 };
+
 
 export const addPlaylist = async (req: Request, res: Response): Promise<void> => {
 	try {
