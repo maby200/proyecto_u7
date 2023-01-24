@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import prisma from "../../datasource/";
-import { verify } from "jsonwebtoken";
+import { Secret, verify } from "jsonwebtoken";
 
 
 export const findAllSongs = async (req:Request, res: Response): Promise<void> => {
@@ -27,7 +27,7 @@ export const findAllSongs = async (req:Request, res: Response): Promise<void> =>
     else{
         const token = authorization.replace("Bearer ", "");
         verify(token, 
-            "67e8aeee5939a45753d931c9871768623ab3f2c68c0c2fa07b9f16349ccc5b7d83881b7dd625df2ae308db59864b2e0c318ac29d8809cca89f3e9bffab1a0a6e", 
+            process.env.TOKEN_SECRET as Secret, 
             (err, decoded) => {
         if (err)
              return res.status(200).json({
