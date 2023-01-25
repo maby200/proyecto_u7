@@ -1,7 +1,7 @@
 # Proyecto Final de la Unidad 7
 
 <div style="text-align: justify">
-Este proyecto usa NodeJS & Express para poder crear una API de música. Tiene la funcionalidad de crear una cuenta y loguearse. Así también permite manejar la creación de canciones y playlists. Las canciones pueden ser privadas (sólo para usuarios con cuenta creada) o públicas. Si no se está logueado sólamente puede acceder las canciones de tipo _público_. Se puede añadir una canción creada a la playlist de preferencia.
+Este proyecto usa NodeJS & Express para poder crear una API de música. Tiene la funcionalidad de crear una cuenta y loguearse. Así también permite manejar la creación de canciones y playlists. Las canciones pueden ser privadas (sólo para usuarios con cuenta creada) o públicas. Si no se está logueado sólamente puede acceder las canciones de tipo <i>público</i>. Se puede añadir una canción creada a la playlist de preferencia.
 </div>
 
 
