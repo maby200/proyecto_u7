@@ -76,6 +76,10 @@ Ahora puedes correr el proyecto y probarlo en Postman o ThunderClient con el com
 ```bash
 npm run dev
 ```
+---
+## Conoce la documentación:
+
+La documentación de este proyecto se encuentra en el siguiente [link](https://documenter.getpostman.com/view/25056232/2s8ZDa1M2W).
 
 ---
 
